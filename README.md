@@ -1,201 +1,94 @@
-🛡️ Intelligent CCTV Surveillance System Using Deep Learning
+# 🛡️ VisionGuard — Intelligent CCTV Surveillance System
 
-An AI-powered smart surveillance system for real-time human activity recognition and anomaly detection from CCTV video streams.
-This project evaluates and deploys state-of-the-art hybrid deep learning architectures to balance accuracy, temporal intelligence, and real-world performance for smart-city security applications.
+An AI-powered smart surveillance system for real-time human activity recognition and anomaly detection from CCTV video streams, comparing three hybrid deep learning architectures to find the best accuracy/speed trade-off for real-world deployment.
 
-📌 Project Overview
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=flat-square&logo=tensorflow&logoColor=white)
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat-square&logo=opencv&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)
 
-Traditional CCTV surveillance relies heavily on manual monitoring, leading to delayed responses, human fatigue, and inconsistent threat detection.
-This project addresses these limitations by introducing an automated, intelligent video surveillance pipeline capable of understanding spatio-temporal human behavior using deep learning.
+---
 
-The system processes CCTV footage as 16-frame video sequences, extracts spatial features, models temporal motion, and classifies activities in real time.
+## Overview
 
-🎯 Key Objectives
+Traditional CCTV surveillance relies on manual monitoring, causing delayed responses and inconsistent threat detection. VisionGuard automates this with an intelligent video pipeline that understands spatio-temporal human behavior — processing CCTV footage as 16-frame sequences, extracting spatial features, modeling temporal motion, and classifying activity in real time.
 
-Automate human activity recognition from CCTV footage
+## Key Objectives
 
-Detect abnormal or suspicious activities using temporal modeling
+- Automate human activity recognition from CCTV footage
+- Detect abnormal or suspicious activity using temporal modeling
+- Compare hybrid deep learning architectures for real-world deployment
+- Optimize inference speed without sacrificing accuracy
+- Design a scalable, deployment-ready surveillance pipeline
 
-Compare hybrid deep learning architectures for real-world deployment
+## System Capabilities
 
-Optimize inference speed without sacrificing accuracy
+- 📹 Video-based human activity recognition
+- 🧠 Spatio-temporal feature learning
+- 🚨 Anomaly & suspicious activity detection
+- ⚡ Real-time optimized inference
+- 📊 Comprehensive performance evaluation
+- 🌐 Smart-city ready surveillance framework
 
-Design a scalable and deployment-ready surveillance pipeline
+## Models Compared
 
-🔍 System Capabilities
+| Model | Training Accuracy | Inference Speed | Generalization |
+|---|---|---|---|
+| ViT + ConvLSTM | 82.20% | Slow | Medium |
+| **ConvNeXt + LSTM** ⭐ | **93.16%** | **Fastest** | **Best** |
+| EfficientNet3D + ConvLSTM | 95% | Very Slow | Poor (overfits) |
 
-📹 Video-based Human Activity Recognition
+**ConvNeXt + LSTM** emerged as the most stable, accurate, and deployment-ready model — best real-time balance of accuracy and speed.
 
-🧠 Spatio-Temporal Feature Learning
+## System Pipeline
 
-🚨 Anomaly & Suspicious Activity Detection
+```
+CCTV Video → Frame Extraction (16-frame sequences)
+  → Preprocessing (Resize, CLAHE, Normalization)
+  → Spatial Feature Extraction (CNN / Transformer)
+  → Temporal Modeling (LSTM / ConvLSTM)
+  → Activity Classification (Softmax)
+  → Output: Activity / Anomaly Label
+```
 
-⚡ Real-Time Optimized Inference
+## Dataset
 
-📊 Comprehensive Performance Evaluation
+- Custom CCTV action recognition dataset
+- Sequence length: 16 frames per clip, frame size 224×224
+- Split: 80% train / 10% validation / 10% test
+- Preprocessing: CLAHE contrast enhancement, brightness normalization, frame stabilization, tensor normalization
 
-🌐 Smart-City Ready Surveillance Framework
+## Evaluation Metrics
 
-🧠 Models Implemented
+Accuracy, RMSE, MAE, MAPE, Confusion Matrix, Inference Speed
 
-The project evaluates three hybrid deep learning architectures:
+## Tech Stack
 
-1️⃣ Vision Transformer + ConvLSTM (ViT-ConvLSTM)
+- **Language:** Python
+- **Deep Learning & CV:** TensorFlow/Keras, OpenCV
+- **Data Handling:** NumPy, Pandas, Matplotlib
+- **Model Types:** CNN, Vision Transformer (ViT), LSTM, ConvLSTM, 3D CNN
 
-Strong global spatial reasoning
+## Research Contributions
 
-Limited generalization on small CCTV datasets
+- Designed and evaluated three hybrid deep learning architectures
+- Built an optimized end-to-end CCTV activity recognition pipeline
+- Analyzed accuracy vs. inference speed trade-offs
+- Identified ConvNeXt-LSTM as the best real-world solution
+- Provided insights for smart-city surveillance deployment
 
-High computational cost
+## Future Enhancements
 
-Training Accuracy: 82.20%
-Inference Speed: Slow
+- Temporal Transformer integration
+- Larger, more diverse CCTV datasets
+- Advanced anomaly scoring mechanisms
+- Real-time alerting dashboards
+- Edge-device deployment optimization
 
-2️⃣ ConvNeXt + LSTM ⭐ (Best Model)
+## Authors
 
-CNN efficiency with transformer-level performance
+**Tanishq Kakkar** & **Kartikeya Singh**
 
-Strong temporal modeling and fast inference
+## License
 
-Best balance between accuracy and speed
-
-Training Accuracy: 93.16%
-Inference Speed: Fastest ⚡
-Best for Real-Time Deployment
-
-3️⃣ EfficientNet3D + ConvLSTM
-
-Powerful spatio-temporal feature extraction
-
-Severe overfitting and high computation cost
-
-Not suitable for real-time use
-
-Training Accuracy: 95%
-Generalization: Poor
-Inference Speed: Very Slow 🐌
-
-🏗️ System Pipeline
-CCTV Video
-   ↓
-Frame Extraction (16-frame sequences)
-   ↓
-Preprocessing (Resize, CLAHE, Normalization)
-   ↓
-Spatial Feature Extraction (CNN / Transformer)
-   ↓
-Temporal Modeling (LSTM / ConvLSTM)
-   ↓
-Activity Classification (Softmax)
-   ↓
-Output: Activity / Anomaly Label
-
-📊 Dataset Details
-
-Custom CCTV action recognition dataset
-
-Sequence length: 16 frames per clip
-
-Frame size: 224 × 224
-
-Data Split:
-
-80% Training
-
-10% Validation
-
-10% Testing
-
-Preprocessing Techniques:
-
-CLAHE (contrast enhancement)
-
-Brightness normalization
-
-Frame stabilization
-
-Tensor normalization
-
-📈 Evaluation Metrics
-
-Accuracy
-
-RMSE
-
-MAE
-
-MAPE
-
-Confusion Matrix
-
-Inference Speed
-
-🏆 Key Results
-Model	Accuracy	Inference Speed	Generalization
-ViT + ConvLSTM	82.20%	Slow	Medium
-ConvNeXt + LSTM	93.16%	Fastest	Best
-EfficientNet3D + ConvLSTM	95% (Train)	Very Slow	Poor
-
-✅ ConvNeXt-LSTM emerged as the most stable, accurate, and deployment-ready model.
-
-🚀 Tech Stack
-
-Programming Language:
-
-Python
-
-Deep Learning & CV:
-
-TensorFlow / Keras
-
-OpenCV
-
-Data Handling & Visualization:
-
-NumPy
-
-Pandas
-
-Matplotlib
-
-Model Types:
-
-CNN
-
-Vision Transformer (ViT)
-
-LSTM
-
-ConvLSTM
-
-3D CNN
-
-🧪 Research Contributions
-
-Designed and evaluated three hybrid deep learning architectures
-
-Built an optimized end-to-end CCTV activity recognition pipeline
-
-Analyzed accuracy vs inference speed trade-offs
-
-Identified ConvNeXt-LSTM as the best real-world solution
-
-Provided insights for smart-city surveillance deployment
-
-🔮 Future Enhancements
-
-Integration of Temporal Transformers
-
-Larger and more diverse CCTV datasets
-
-Advanced anomaly scoring mechanisms
-
-Real-time alerting dashboards
-
-Edge-device deployment optimization
-
-👥 Authors
-
-Tanishq Kakkar
-
-Kartikeya Singh
+MIT License
